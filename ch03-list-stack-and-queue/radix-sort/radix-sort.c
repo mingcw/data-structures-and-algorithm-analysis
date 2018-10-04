@@ -77,6 +77,10 @@ void radixSort(int arr[], int size)
         base *= RADIX;
         count++;
     }
+
+    // 6. 销毁桶
+    for (int i = 0; i < BUCKETS_NUMBER; i++)
+        free(buckets[i]);
 }
 
 // 获取最大数的位数
