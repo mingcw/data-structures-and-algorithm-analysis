@@ -18,9 +18,9 @@ typedef char ElementType;
 
 typedef struct StackRecord
 {
-    Position topOfStack; // 栈顶
-    ElementType(*array)[SIZE]; // 栈空间，数组指针
-} *Stack;
+    Position topOfStack; // 鏍堥《
+    ElementType(*array)[SIZE]; // 鏍堢┖闂达紝鏁扮粍鎸囬拡
+} * Stack;
 
 
 Stack createStack(void);

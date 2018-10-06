@@ -20,7 +20,7 @@ bool isEmpty(Stack S)
 
 bool isFull(Stack S)
 {
-    return S->topOfStack == SIZE - 1; // topOfStack ´Ó 0 ¿ªÊ¼
+    return S->topOfStack == SIZE - 1; // topOfStack ä»Ž 0 å¼€å§‹
 }
 
 ElementType push(Stack S, ElementType X)

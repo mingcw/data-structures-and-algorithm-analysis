@@ -11,9 +11,9 @@ int main(void)
     char unbalance1[] = "Thi(s is [an inv)alida]te string.";
     char unbalance2[] = "Thi(s is [an inva]lida)te {string.";
 
-    printf("First string is %s.\n", isBalance( balance ) ? "balance" : "unbalance");
-    printf("First string is %s.\n", isBalance(unbalance1) ? "balance" : "unbalance");
-    printf("First string is %s.\n", isBalance(unbalance2) ? "balance" : "unbalance");
+    printf("string 1 is %s.\n", isBalance( balance ) ? "balance" : "unbalance");
+    printf("string 2 is %s.\n", isBalance(unbalance1) ? "balance" : "unbalance");
+    printf("string 3 is %s.\n", isBalance(unbalance2) ? "balance" : "unbalance");
 
     return 0;
 }
