@@ -11,14 +11,14 @@ int main(void)
     char unbalance1[] = "Thi(s is [an inv)alida]te string.";
     char unbalance2[] = "Thi(s is [an inva]lida)te {string.";
 
-    printf("string 1 is %s.\n", isBalance( balance ) ? "balance" : "unbalance");
+    printf("string 1 is %s.\n", isBalance(  balance ) ? "balance" : "unbalance");
     printf("string 2 is %s.\n", isBalance(unbalance1) ? "balance" : "unbalance");
     printf("string 3 is %s.\n", isBalance(unbalance2) ? "balance" : "unbalance");
 
     return 0;
 }
 
-// ¼ì²é×Ö·û´®µÄËùÓĞÀ¨ºÅÊÇ·ñÈ«²¿±ÕºÏ
+// æ£€æŸ¥å­—ç¬¦ä¸²çš„æ‰€æœ‰æ‹¬å·æ˜¯å¦å…¨éƒ¨é—­åˆ
 bool isBalance(char * str)
 {
     Stack S;
@@ -31,14 +31,14 @@ bool isBalance(char * str)
     {
         switch (ch)
         {
-            // Óöµ½¿ª·Å·ûºÅÑ¹ÈëÕ»ÖĞ
+            // é‡åˆ°å¼€æ”¾ç¬¦å·å‹å…¥æ ˆä¸­
             case '(':
             case '[':
             case '{':
                 push(S, ch);
                 break;
 
-            // Óöµ½±ÕºÏÀ¨ºÅ£¬Èç¹ûÊÇ¡¸¿ÕÕ»¡¹»òÓëÕ»¶¥µ¯³öµÄ¿ª·Å·ûºÅ¡¸²»³É¶Ô¡¹Ôò±¨´í
+            // é‡åˆ°é—­åˆæ‹¬å·ï¼Œå¦‚æœæ˜¯ã€Œç©ºæ ˆã€æˆ–ä¸æ ˆé¡¶å¼¹å‡ºçš„å¼€æ”¾ç¬¦å·ã€Œä¸æˆå¯¹ã€åˆ™æŠ¥é”™
             case ')':
             case ']':
             case '}':
@@ -51,7 +51,7 @@ bool isBalance(char * str)
         i++;
     }
 
-    // ÔÚÎÄ¼şÎ²£¨ÕâÀïÊÇ×Ö·û´®£©Ê±£¬Èç¹ûÕ»·Ç¿ÕÔò±¨´í
+    // åœ¨æ–‡ä»¶å°¾ï¼ˆè¿™é‡Œæ˜¯å­—ç¬¦ä¸²ï¼‰æ—¶ï¼Œå¦‚æœæ ˆéç©ºåˆ™æŠ¥é”™
     if (!isEmpty(S))
         balance = false;
 
