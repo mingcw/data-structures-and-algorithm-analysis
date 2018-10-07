@@ -18,7 +18,7 @@ int main(void)
     return 0;
 }
 
-// ¼ÆËãÒ»¸öºÏ·¨µÄºó×º±í´ïÊ½
+// è®¡ç®—ä¸€ä¸ªåˆæ³•çš„åŽç¼€è¡¨è¾¾å¼
 int calcPostfixExpression(char expr[])
 {
     Stack S;
@@ -44,7 +44,7 @@ int calcPostfixExpression(char expr[])
     return result;
 }
 
-// ÅÐ¶Ï×Ö·û ch ÊÇ·ñÊý×Ö×Ö·û
+// åˆ¤æ–­å­—ç¬¦ ch æ˜¯å¦æ•°å­—å­—ç¬¦
 bool isNumber(char ch)
 {
     if (ch >= '0' && ch <= '9')
@@ -53,8 +53,8 @@ bool isNumber(char ch)
         return false;
 }
 
-// ´Ó expr ×Ö·û´®µÄ i Î»ÖÃ
-// ¿ªÊ¼ÌáÈ¡Ò»¸öÕûÊý
+// ä»Ž expr å­—ç¬¦ä¸²çš„ i ä½ç½®
+// å¼€å§‹æå–ä¸€ä¸ªæ•´æ•°
 int parseInt(char expr[], int i)
 {
     char ch;
@@ -70,8 +70,8 @@ int parseInt(char expr[], int i)
     return number;
 }
 
-// ÅÐ¶Ï ch ÊÇ·ñÊÇÒ»¸öÔËËã·û,
-// ÔÝÖ§³Ö + ºÍ *
+// åˆ¤æ–­ ch æ˜¯å¦æ˜¯ä¸€ä¸ªè¿ç®—ç¬¦,
+// æš‚æ”¯æŒ + å’Œ *
 bool isOperator(char ch)
 {
     if (ch == '+' || ch == '*')
@@ -80,8 +80,8 @@ bool isOperator(char ch)
         return false;
 }
 
-// ¶Ô a1 ºÍ a2 Ó¦ÓÃ symbol ÔËËã·û,
-// ·µ»ØÔËËã½á¹û
+// å¯¹ a1 å’Œ a2 åº”ç”¨ symbol è¿ç®—ç¬¦,
+// è¿”å›žè¿ç®—ç»“æžœ
 int operate(int a1, int a2, char symbol)
 {
     if (isOperator(symbol))
