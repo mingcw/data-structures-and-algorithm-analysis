@@ -48,8 +48,13 @@ void infixToPostfix(char * infix, char * postfix)
         }
         else
         {
-            while (!isEmpty(S) && top(S) != '(' && !isPrior(*infix, top(S))) // 在循环弹出较优先的栈元素时，左圆括号不能弹出，除非遇到右圆括号！！！
+            while (!isEmpty(S) && !isPrior(*infix, top(S)))
+            {
+                if (top(S) == '(') // 左圆括号不能弹出，除非遇到右圆括号！！！
+                    break;
+
                 *postfix++ = pop(S);
+            }
             push(S, *infix++);
         }
     }
