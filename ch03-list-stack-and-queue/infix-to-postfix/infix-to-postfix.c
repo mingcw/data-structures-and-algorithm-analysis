@@ -40,6 +40,7 @@ void infixToPostfix(char * infix, char * postfix)
         {
             while (!isEmpty(S) && (ch = pop(S)) != '(')
                 *postfix++ = ch;
+            infix++; // 字符指针前进一步！！！
         }
         else if (*infix == '(')
         {
@@ -47,7 +48,7 @@ void infixToPostfix(char * infix, char * postfix)
         }
         else
         {
-            while (!isEmpty(S) && !isPrior(*infix, top(S)))
+            while (!isEmpty(S) && top(S) != '(' && !isPrior(*infix, top(S))) // 在循环弹出较优先的栈元素时，左圆括号不能弹出，除非遇到右圆括号！！！
                 *postfix++ = pop(S);
             push(S, *infix++);
         }
