@@ -1,4 +1,4 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include "stack.h"
 #include "tree.h"
 
@@ -15,15 +15,15 @@ int main(void)
 
     T = postfixToTree(str);
 
-    puts("Ç°Ðò±éÀú-Ç°×º±í´ïÊ½: ");
+    puts("å‰åºéåŽ†-å‰ç¼€è¡¨è¾¾å¼: ");
     preorderTraversal(T, printNode);
     puts("\n");
 
-    puts("ÖÐÐò±éÀú-ÖÐ×º±í´ïÊ½: ");
+    puts("ä¸­åºéåŽ†-ä¸­ç¼€è¡¨è¾¾å¼: ");
     inorderTraversal(T, printNode);
     puts("\n");
 
-    puts("ºóÐø±éÀú-ºó×º±í´ïÊ½: ");
+    puts("åŽç»­éåŽ†-åŽç¼€è¡¨è¾¾å¼: ");
     postorderTraversal(T, printNode);
     puts("\n");
 
@@ -32,7 +32,7 @@ int main(void)
     return 0;
 }
 
-// ÀûÓÃºó×º±í´ïÊ½¹¹ÔìÒ»¿Å±í´ïÊ½Ê÷
+// åˆ©ç”¨åŽç¼€è¡¨è¾¾å¼æž„é€ ä¸€é¢—è¡¨è¾¾å¼æ ‘
 Tree postfixToTree(char * postfix)
 {
     Stack S;
@@ -47,7 +47,7 @@ Tree postfixToTree(char * postfix)
             T = createTree(*postfix);
             push(S, T);
         }
-        else // ÔËËã·û
+        else // è¿ç®—ç¬¦
         {
             T = createTree(*postfix);
             T->right = pop(S);
