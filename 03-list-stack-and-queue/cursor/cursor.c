@@ -1,66 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
+﻿// 链表的游标实现法，实现文件
 
-#define SIZE 10 // 链表节点数
-#define SPACE_SIZE (SIZE + 2) // 游标空间和链表各有1个头结点，仅作标识
-#define ElEMENT 5 // 要查找的元素
-#define FatalError(msg) \
-{\
-    puts(msg);\
-    exit(EXIT_FAILURE);\
-}
-
-typedef int ElementType;
-typedef int Position;
-typedef Position PtrToNode;
-typedef PtrToNode List;
-typedef void(*PFunc)(Position);
-
-typedef struct Node
-{
-    ElementType element;
-    Position next;   
-} Node;
-
-Node cursorSpace[SPACE_SIZE];
-
-void initCursorSpace(void);
-Position cursorAlloc(void);
-Position cursorFree(Position P);
-List createList(void);
-Position insert(List L, ElementType X);
-Position find(List L, ElementType X);
-Position findPrev(List L, ElementType X);
-void delete(List L, Position P);
-void destroyList(List L);
-void traversal(List L, PFunc printNode);
-void printNode(Position P);
-
-int main(void)
-{
-    List L;
-    Position P;
-
-    initCursorSpace();
-
-    L = createList();
-    for (int i = 0; i < SIZE - 1; i++)
-        insert(L, i + 1);
-
-    printf("Initial List: ");
-    traversal(L, printNode);
-
-    P = find(L, ElEMENT);
-    delete(L, P);
-
-    puts("\n");
-    printf("after deleting %d: ", cursorSpace[P].element);
-    traversal(L, printNode);
-
-    destroyList(L);
-
-    return 0;
-}
+#include "cursor.h"
 
 void initCursorSpace(void)
 {
@@ -116,7 +56,7 @@ Position insert(List L, ElementType X)
     return P;
 }
 
-// 返回 Ele 在 L 中第一次出现的位置,
+// 返回 X 在 L 中第一次出现的位置,
 // 没找到则返回 0
 Position find(List L, ElementType X)
 {
@@ -128,7 +68,7 @@ Position find(List L, ElementType X)
     return P;
 }
 
-// 返回 Ele 在 L 中首次出现时前驱元的
+// 返回 X 在 L 中首次出现时前驱元的
 // 位置, 没找到时返回 0
 Position findPrev(List L, ElementType X)
 {
@@ -166,10 +106,4 @@ void traversal(List L, PFunc pfunc)
         (*pfunc)(P);
         P = cursorSpace[P].next;
     }
-}
-
-// 打印节点
-void printNode(Position P)
-{
-    printf("%d, ", cursorSpace[P].element);
 }
