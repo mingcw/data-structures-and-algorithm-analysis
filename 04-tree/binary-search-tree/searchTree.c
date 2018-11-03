@@ -11,7 +11,7 @@ struct TreeNode
     SearchTree right;
 };
 
-// 清空树 - 递归
+// 清空树
 SearchTree makeEmpty(SearchTree T)
 {
     if (T != NULL)
@@ -37,7 +37,7 @@ Position find(ElementType X, SearchTree T)
         return T;
 }
 
-// 查找最小值 - 递归
+// 查找最小值
 Position findMin(SearchTree T)
 {
     if (T == NULL)
@@ -59,7 +59,7 @@ Position findMax(SearchTree T)
     return T;
 }
 
-// 插入元素 X - 递归
+// 插入元素
 SearchTree insert(ElementType X, SearchTree T)
 {
     if (T != NULL)
@@ -85,7 +85,7 @@ SearchTree insert(ElementType X, SearchTree T)
     return T;
 }
 
-// 删除元素 X - 递归
+// 删除元素
 SearchTree delete(ElementType X, SearchTree T)
 {
     Position tmpCell;
