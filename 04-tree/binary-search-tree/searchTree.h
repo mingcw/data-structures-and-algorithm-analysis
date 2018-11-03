@@ -1,4 +1,4 @@
-// ¶ş²æ²éÕÒÊ÷µÄ½Ó¿ÚÍ·ÎÄ¼ş
+// äºŒå‰æŸ¥æ‰¾æ ‘çš„æ¥å£å¤´æ–‡ä»¶
 
 #ifndef TREE_H
 #define TREE_H
@@ -10,7 +10,7 @@
 }
 
 typedef int ElementType;
-// ÇëÔÚÊµÏÖÎÄ¼şÀï¶¨Òå¾ßÌåµÄ TreeNode
+// è¯·åœ¨å®ç°æ–‡ä»¶é‡Œå®šä¹‰å…·ä½“çš„ TreeNode
 struct TreeNode;
 typedef struct TreeNode * Position;
 typedef struct TreeNode * SearchTree;

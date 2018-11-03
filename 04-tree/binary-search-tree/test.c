@@ -1,4 +1,4 @@
-// ����������Ľӿڲ��ԣ��������ļ�
+﻿// 二叉查找树的接口测试（驱动）文件
 
 #include <stdio.h>
 #include "searchTree.h"
@@ -15,35 +15,35 @@ int main(void)
     int i;
     int j = 0;
 
-    // ��ʼ��һ�ſ���
+    // 初始化一颗空树
     T = makeEmpty(NULL);
 
-    // �� 7 Ϊ������SIZE = 20 Ϊ��Χ���� 0 ��ʼ
-    // ������ 0, 7, 14, 1, 8, ... , 13 �� 20 ��
-    // ���ظ����֣����β��뵽��������� T �
+    // 以 7 为步长，SIZE = 20 为范围，从 0 开始
+    // 生成数 0, 7, 14, 1, 8, ... , 13 共 20 个
+    // 不重复数字，依次插入到二叉查找树 T 里。
     for (i = 0; i < SIZE; i++, j = (j + 7) % SIZE)
         T = insert(j, T);
 
-    // ȷ������������ɹ�
+    // 确认所有数插入成功
     for (i = 0; i < SIZE; i++)
         if ((P = find(i, T)) == NULL || retrieve(P) != i)
             printf("Error at %d\n", i);
     
-    // ɾ��ż���ڵ�
+    // 删除偶数节点
     for (i = 0; i < SIZE; i += 2)
         T = delete(i, T);
 
-    // ȷ�������ڵ�
+    // 确认奇数节点
     for (i = 1; i < SIZE; i += 2)
         if ((P = find(i, T)) == NULL || retrieve(P) != i)
             printf("Error at %d\n", i);
 
-    // ȷ��ż���ڵ�ɾ���ɹ�
+    // 确认偶数节点删除成功
     for (i = 0; i < SIZE; i += 2)
         if ((P = find(i, T)) != NULL)
             printf("Error at %d\n", i);
 
-    // ��ӡ������ֵ min, max
+    // 打印树的最值 min, max
     printf("Min is %d, Max is %d\n", retrieve(findMin(T)),
         retrieve(findMax(T)));
 

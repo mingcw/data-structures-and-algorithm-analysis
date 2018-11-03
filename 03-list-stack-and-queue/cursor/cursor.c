@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define SIZE 10 // Á´±í½ÚµãÊı
-#define SPACE_SIZE (SIZE + 2) // ÓÎ±ê¿Õ¼äºÍÁ´±í¸÷ÓĞ1¸öÍ·½áµã£¬½ö×÷±êÊ¶
-#define ElEMENT 5 // Òª²éÕÒµÄÔªËØ
+#define SIZE 10 // é“¾è¡¨èŠ‚ç‚¹æ•°
+#define SPACE_SIZE (SIZE + 2) // æ¸¸æ ‡ç©ºé—´å’Œé“¾è¡¨å„æœ‰1ä¸ªå¤´ç»“ç‚¹ï¼Œä»…ä½œæ ‡è¯†
+#define ElEMENT 5 // è¦æŸ¥æ‰¾çš„å…ƒç´ 
 #define FatalError(msg) \
 {\
     puts(msg);\
@@ -71,7 +71,7 @@ void initCursorSpace(void)
 
 Position cursorAlloc(void)
 {
-    Position first = cursorSpace[0].next; // ·ÖÅäÍ·½áµãµÄºó¼Ì
+    Position first = cursorSpace[0].next; // åˆ†é…å¤´ç»“ç‚¹çš„åç»§
     cursorSpace[0].next = cursorSpace[first].next;
 
     return first;
@@ -79,7 +79,7 @@ Position cursorAlloc(void)
 
 Position cursorFree(Position P)
 {
-    cursorSpace[P].next = cursorSpace[0].next; // »ØÊÕ½Úµã 1
+    cursorSpace[P].next = cursorSpace[0].next; // å›æ”¶èŠ‚ç‚¹ 1
     cursorSpace[0].next = P;
 
     return P;
@@ -96,7 +96,7 @@ List createList(void)
     return head;
 }
 
-// ÔÚ L ÖĞ ²åÈë X£¨Î²²å·¨£©
+// åœ¨ L ä¸­ æ’å…¥ Xï¼ˆå°¾æ’æ³•ï¼‰
 Position insert(List L, ElementType X)
 {
     Position P, tmp;
@@ -109,15 +109,15 @@ Position insert(List L, ElementType X)
     cursorSpace[P].next = 0;
 
     tmp = L;
-    while (cursorSpace[tmp].next != 0) // ÕÒÎ²½Úµã
+    while (cursorSpace[tmp].next != 0) // æ‰¾å°¾èŠ‚ç‚¹
         tmp = cursorSpace[tmp].next;
-    cursorSpace[tmp].next = P;       // ×·¼ÓĞÂ½Úµã
+    cursorSpace[tmp].next = P;       // è¿½åŠ æ–°èŠ‚ç‚¹
 
     return P;
 }
 
-// ·µ»Ø Ele ÔÚ L ÖĞµÚÒ»´Î³öÏÖµÄÎ»ÖÃ,
-// Ã»ÕÒµ½Ôò·µ»Ø 0
+// è¿”å› Ele åœ¨ L ä¸­ç¬¬ä¸€æ¬¡å‡ºç°çš„ä½ç½®,
+// æ²¡æ‰¾åˆ°åˆ™è¿”å› 0
 Position find(List L, ElementType X)
 {
     Position P;
@@ -128,8 +128,8 @@ Position find(List L, ElementType X)
     return P;
 }
 
-// ·µ»Ø Ele ÔÚ L ÖĞÊ×´Î³öÏÖÊ±Ç°ÇıÔªµÄ
-// Î»ÖÃ, Ã»ÕÒµ½Ê±·µ»Ø 0
+// è¿”å› Ele åœ¨ L ä¸­é¦–æ¬¡å‡ºç°æ—¶å‰é©±å…ƒçš„
+// ä½ç½®, æ²¡æ‰¾åˆ°æ—¶è¿”å› 0
 Position findPrev(List L, ElementType X)
 {
     Position P;
@@ -140,7 +140,7 @@ Position findPrev(List L, ElementType X)
     return P;
 }
 
-// É¾³ı L ÖĞ P Î»ÖÃ´¦µÄ½Úµã
+// åˆ é™¤ L ä¸­ P ä½ç½®å¤„çš„èŠ‚ç‚¹
 void delete(List L, Position P)
 {
     Position prev;
@@ -150,13 +150,13 @@ void delete(List L, Position P)
     cursorFree(P);
 }
 
-// Ïú»ÙÁ´±í
+// é”€æ¯é“¾è¡¨
 void destroyList(List L)
 {
     cursorSpace[L].next = 0;
 }
 
-// ¶ÔÁ´±íµÄÃ¿Ò»¸ö½Úµã£¬Ó¦ÓÃÒ»´Îº¯Êı pfunc
+// å¯¹é“¾è¡¨çš„æ¯ä¸€ä¸ªèŠ‚ç‚¹ï¼Œåº”ç”¨ä¸€æ¬¡å‡½æ•° pfunc
 void traversal(List L, PFunc pfunc)
 {
     Position P = cursorSpace[L].next;
@@ -168,7 +168,7 @@ void traversal(List L, PFunc pfunc)
     }
 }
 
-// ´òÓ¡½Úµã
+// æ‰“å°èŠ‚ç‚¹
 void printNode(Position P)
 {
     printf("%d, ", cursorSpace[P].element);

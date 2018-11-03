@@ -1,4 +1,4 @@
-// ¶ş²æ²éÕÒÊ÷µÄ½Ó¿ÚÊµÏÖÎÄ¼ş
+// äºŒå‰æŸ¥æ‰¾æ ‘çš„æ¥å£å®ç°æ–‡ä»¶
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,7 +11,7 @@ struct TreeNode
     SearchTree right;
 };
 
-// Çå¿ÕÊ÷ - µİ¹é
+// æ¸…ç©ºæ ‘ - é€’å½’
 SearchTree makeEmpty(SearchTree T)
 {
     if (T != NULL)
@@ -24,7 +24,7 @@ SearchTree makeEmpty(SearchTree T)
 }
 
 
-// ²éÕÒÔªËØ X ËùÔÚµÄÎ»ÖÃ
+// æŸ¥æ‰¾å…ƒç´  X æ‰€åœ¨çš„ä½ç½®
 Position find(ElementType X, SearchTree T)
 {
     if (T == NULL)
@@ -37,7 +37,7 @@ Position find(ElementType X, SearchTree T)
         return T;
 }
 
-// ²éÕÒ×îĞ¡Öµ - µİ¹é
+// æŸ¥æ‰¾æœ€å°å€¼ - é€’å½’
 Position findMin(SearchTree T)
 {
     if (T == NULL)
@@ -48,7 +48,7 @@ Position findMin(SearchTree T)
         return findMin(T->left);
 }
 
-// ²éÕÒ×î´óÖµ - ·Çµİ¹é
+// æŸ¥æ‰¾æœ€å¤§å€¼ - éé€’å½’
 Position findMax(SearchTree T)
 {
     if (T == NULL)
@@ -59,7 +59,7 @@ Position findMax(SearchTree T)
     return T;
 }
 
-// ²åÈëÔªËØ X - µİ¹é
+// æ’å…¥å…ƒç´  X - é€’å½’
 SearchTree insert(ElementType X, SearchTree T)
 {
     if (T != NULL)
@@ -68,11 +68,11 @@ SearchTree insert(ElementType X, SearchTree T)
             T->left = insert(X, T->left);
         else if (X > T->element)
             T->right = insert(X, T->right);
-        // ·ñÔò X ÒÑ¾­ÔÚÊ÷Àï£¬Ê²Ã´¶¼²»×ö
+        // å¦åˆ™ X å·²ç»åœ¨æ ‘é‡Œï¼Œä»€ä¹ˆéƒ½ä¸åš
     }
     else
     {
-        // ·ÖÅäÄÚ´æ£¬´´½¨Ò»¸ö·Ç¿ÕµÄ½Úµã£¬Ğ´ÈëÔªËØ X
+        // åˆ†é…å†…å­˜ï¼Œåˆ›å»ºä¸€ä¸ªéç©ºçš„èŠ‚ç‚¹ï¼Œå†™å…¥å…ƒç´  X
         T = (SearchTree)malloc(sizeof(struct TreeNode));
         if (T == NULL)
             FatalError("Failed to allocate memory");
@@ -85,7 +85,7 @@ SearchTree insert(ElementType X, SearchTree T)
     return T;
 }
 
-// É¾³ıÔªËØ X - µİ¹é
+// åˆ é™¤å…ƒç´  X - é€’å½’
 SearchTree delete(ElementType X, SearchTree T)
 {
     Position tmpCell;
@@ -94,23 +94,23 @@ SearchTree delete(ElementType X, SearchTree T)
     {
         return NULL;
     }
-    else if (X < T->element) // È¥×ó×ÓÊ÷
+    else if (X < T->element) // å»å·¦å­æ ‘
     {
-        T->left  = delete(X, T->left); // !!! Ç§Íò¼ÇµÃ£ºÉ¾³ıÁË×ÓÊ÷ÔªËØºó£¬·µ»ØµÄĞÂ×ÓÊ÷Ö¸Õë£¬
-                                       //     ±ØĞë¸üĞÂµ½Ê÷¸ùµÄ×ó×ÓÊ÷Ö¸ÕëÉÏ£¬·ñÔòÊ÷¾Í¶ÏµôÁË
+        T->left  = delete(X, T->left); // !!! åƒä¸‡è®°å¾—ï¼šåˆ é™¤äº†å­æ ‘å…ƒç´ åï¼Œè¿”å›çš„æ–°å­æ ‘æŒ‡é’ˆï¼Œ
+                                       //     å¿…é¡»æ›´æ–°åˆ°æ ‘æ ¹çš„å·¦å­æ ‘æŒ‡é’ˆä¸Šï¼Œå¦åˆ™æ ‘å°±æ–­æ‰äº†
     }
-    else if (X > T->element) // È¥ÓÒ×ÓÊ÷
+    else if (X > T->element) // å»å³å­æ ‘
     {
-        T->right = delete(X, T->right);// !!! Í¬ÉÏ
+        T->right = delete(X, T->right);// !!! åŒä¸Š
     }
-    else // ÕÒµ½ÁËÒªÉ¾³ıµÄ½Úµã
-    if (T->left && T->right) // Á½¸ö×Ó½Úµã
+    else // æ‰¾åˆ°äº†è¦åˆ é™¤çš„èŠ‚ç‚¹
+    if (T->left && T->right) // ä¸¤ä¸ªå­èŠ‚ç‚¹
     {
         tmpCell = findMin(T->right);
         T->element = tmpCell->element;
         T->right = delete(T->element, T->right);
     }
-    else                     // Ò»¸ö»òÃ»ÓĞ×Ó½Úµã
+    else                     // ä¸€ä¸ªæˆ–æ²¡æœ‰å­èŠ‚ç‚¹
     {
         tmpCell = T;
         if (T->left == NULL)
@@ -123,7 +123,7 @@ SearchTree delete(ElementType X, SearchTree T)
     return T;
 }
 
-// ¼ìË÷Î»ÖÃ P ´¦µÄÔªËØ
+// æ£€ç´¢ä½ç½® P å¤„çš„å…ƒç´ 
 ElementType retrieve(Position P)
 {
     if (P == NULL)
